@@ -6,7 +6,7 @@ export const NavMenu: VFC = memo(() => {
   return (
     <>
       <p>path: {location.pathname}</p>
-      <h2>5 style</h2>
+      <h2>6 style</h2>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -15,37 +15,19 @@ export const NavMenu: VFC = memo(() => {
           <Link to="/public">Public</Link>
         </li>
         <li>
-          <Link to="/profile/8888">Profile - id:8888</Link>
+          <Link to="/new/6/secret">Secret (not login)</Link>
         </li>
         <li>
-          <Link to="/secret">Secret (login)</Link>
+          <Link to="/new/6/profile/foobar">Profile6 - id: foobar</Link>
         </li>
         <li>
-          <Link to="/mypage">Mypage</Link>
+          <Link to="/new/6/mypage">Mypage</Link>
         </li>
         <li>
-          <Link to="/mypage/bookmarks">Bookmarks</Link>
+          <Link to="/new/6/mypage/bookmarks">Bookmarks</Link>
         </li>
         <li>
-          <Link to="/mypage/settings">Settings</Link>
-        </li>
-      </ul>
-      <h2>5.1 style</h2>
-      <ul>
-        <li>
-          <Link to="/new/5.1/secret">Secret (not login)</Link>
-        </li>
-        <li>
-          <Link to="/new/5.1/profile/foobar">Profile5.1 - id: foobar</Link>
-        </li>
-        <li>
-          <Link to="/new/5.1/mypage">Mypage</Link>
-        </li>
-        <li>
-          <Link to="/new/5.1/mypage/bookmarks">Bookmarks</Link>
-        </li>
-        <li>
-          <Link to="/new/5.1/mypage/settings">Settings</Link>
+          <Link to="/new/6/mypage/settings">Settings</Link>
         </li>
       </ul>
     </>
