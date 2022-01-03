@@ -11,7 +11,7 @@ import { PrivateRoute } from "./PrivateRouter";
 export const Router: VFC = memo(() => {
   return (
     <Switch>
-      <Route exact path="/">
+      <Route path="/">
         <Home />
       </Route>
       <Route path="/public">
@@ -23,7 +23,7 @@ export const Router: VFC = memo(() => {
       <Route
         path="/new/5.1/secret"
         component={() => (
-          <PrivateRoute exact={false} path="/new/5.1/secret" loginUser={false}>
+          <PrivateRoute path="/new/5.1/secret" loginUser={false}>
             <Secret />
           </PrivateRoute>
         )}
@@ -37,11 +37,7 @@ export const Router: VFC = memo(() => {
               <Route
                 path={`${url}${route.path}`}
                 component={() => (
-                  <PrivateRoute
-                    exact={route.exact}
-                    path={`${url}${route.path}`}
-                    loginUser={true}
-                  >
+                  <PrivateRoute path={`${url}${route.path}`} loginUser={true}>
                     {route.children}
                   </PrivateRoute>
                 )}
