@@ -1,55 +1,41 @@
 import React, { VFC, memo } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Home } from "../components/pages/Home";
 import { Public } from "../components/pages/Public";
 import { Profile51 } from "../components/pages/Profile51";
 import { Secret } from "../components/pages/Secret";
+import { MyPage } from "../components/pages/my/MyPage";
 import { NotFound } from "../components/pages/NotFound";
 import { MyRouter } from "./MyRouter";
 import { PrivateRoute } from "./PrivateRouter";
 
 export const Router: VFC = memo(() => {
   return (
-    <Switch>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="/public">
-        <Public />
-      </Route>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="public" element={<Public />} />
 
-      <Route path="/new/5.1/profile/:id" children={<Profile51 />} />
+      <Route path="new/6/profile/:id" element={<Profile51 />} />
 
       <Route
-        path="/new/5.1/secret"
-        component={() => (
-          <PrivateRoute path="/new/5.1/secret" loginUser={false}>
-            <Secret />
-          </PrivateRoute>
-        )}
+        path="new/6/secret"
+        element={<PrivateRoute loginUser={false} children={<Secret />} />}
       />
-
       <Route
-        path="/new/5.1/mypage"
-        render={({ match: { url } }) => (
-          <Switch>
-            {MyRouter.map((route) => (
-              <Route
-                path={`${url}${route.path}`}
-                component={() => (
-                  <PrivateRoute path={`${url}${route.path}`} loginUser={true}>
-                    {route.children}
-                  </PrivateRoute>
-                )}
-              />
-            ))}
-          </Switch>
-        )}
-      />
-
-      <Route path="*">
-        <NotFound />
+        path="new/6/mypage"
+        element={<PrivateRoute loginUser={true} children={<MyPage />} />}
+      >
+        {MyRouter.map((route) => (
+          <Route
+            path={route.path}
+            element={
+              <PrivateRoute loginUser={true} children={route.children} />
+            }
+          />
+        ))}
       </Route>
-    </Switch>
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 });
