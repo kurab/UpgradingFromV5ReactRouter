@@ -16,3 +16,12 @@ Run ncu -u to upgrade package.json
 - props to useParams()
 - remove Redirect
 - Refactor custome Route (PrivateRoute)
+
+> sample codes are in upgradeToV51 branch
+
+## upgrade to v6
+
+- remove exact
+- component to element
+- Redirect to Navigate
+- Switch to Routes
